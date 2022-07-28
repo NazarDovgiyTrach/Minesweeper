@@ -1,40 +1,30 @@
-package com.home.game.sapper.model;
+package com.home.game.minesweeper.model;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
 import java.util.function.IntPredicate;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Field {
     private final Cell[][] cells;
-    private final Random random = new Random();
 
     public Field(int height, int weight) {
         this.cells = new Cell[height][weight];
+        fillCells();
     }
 
 
     public Cell getCell(int x, int y) {
-        return Optional.ofNullable(cells[x][y]).orElseGet(() -> addNewCell(x, y));
+        return Objects.requireNonNull(cells[x][y], "Cell cannot be null!");
     }
-
 
     public void populateBombs(int amount) {
-        for (int i = 0; i < amount; ++i) {
-            populateBomb();
-        }
-    }
+        LinkedList<Cell> emptyCells = Arrays.stream(this.cells)
+                .flatMap(Arrays::stream)
+                .collect(Collectors.toCollection(LinkedList::new));
 
-    public void populateBomb() {
-        int x = random.nextInt(cells.length);
-        int y = random.nextInt(cells[0].length);
-        if (cells[x][y] != null) {
-            populateBomb();
-        } else {
-            cells[x][y] = Cell.createBomb(x, y);
-        }
-
+        Collections.shuffle(emptyCells);
+        IntStream.rangeClosed(0, amount).forEach(x -> emptyCells.pop().setBomb(true));
     }
 
     public List<Cell> getNeighboringCells(Cell cell) {
@@ -97,9 +87,11 @@ public class Field {
         }
     }
 
-    private Cell addNewCell(int x, int y) {
-        Cell newCell = new Cell(x, y);
-        cells[x][y] = newCell;
-        return newCell;
+    private void fillCells() {
+        for (int i = 0; i < cells.length; i++) {
+            for (int j = 0; j < cells[0].length; j++) {
+                cells[i][j] = new Cell(i, j);
+            }
+        }
     }
 }

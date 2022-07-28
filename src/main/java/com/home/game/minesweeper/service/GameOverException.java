@@ -1,4 +1,4 @@
-package com.home.game.sapper.service;
+package com.home.game.minesweeper.service;
 
 public class GameOverException extends Exception{
 }

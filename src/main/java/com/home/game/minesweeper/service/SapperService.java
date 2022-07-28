@@ -1,7 +1,7 @@
-package com.home.game.sapper.service;
+package com.home.game.minesweeper.service;
 
-import com.home.game.sapper.model.Cell;
-import com.home.game.sapper.model.Field;
+import com.home.game.minesweeper.model.Cell;
+import com.home.game.minesweeper.model.Field;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;

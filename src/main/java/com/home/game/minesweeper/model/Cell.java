@@ -1,4 +1,4 @@
-package com.home.game.sapper.model;
+package com.home.game.minesweeper.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

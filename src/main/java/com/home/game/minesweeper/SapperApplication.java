@@ -1,8 +1,8 @@
-package com.home.game.sapper;
+package com.home.game.minesweeper;
 
-import com.home.game.sapper.service.GameWinException;
-import com.home.game.sapper.service.GameOverException;
-import com.home.game.sapper.service.SapperService;
+import com.home.game.minesweeper.service.GameWinException;
+import com.home.game.minesweeper.service.GameOverException;
+import com.home.game.minesweeper.service.SapperService;
 
 import java.io.BufferedReader;
 import java.io.IOException;
