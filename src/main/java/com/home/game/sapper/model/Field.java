@@ -22,10 +22,19 @@ public class Field {
 
     public void populateBombs(int amount) {
         for (int i = 0; i < amount; ++i) {
-            int x = random.nextInt(cells.length);
-            int y = random.nextInt(cells[0].length);
+            populateBomb();
+        }
+    }
+
+    public void populateBomb() {
+        int x = random.nextInt(cells.length);
+        int y = random.nextInt(cells[0].length);
+        if (cells[x][y] != null) {
+            populateBomb();
+        } else {
             cells[x][y] = Cell.createBomb(x, y);
         }
+
     }
 
     public List<Cell> getNeighboringCells(Cell cell) {
@@ -42,11 +51,11 @@ public class Field {
     }
 
     public void print() {
-        for(int i = 0; i <cells.length; i++){
-            if(i == 0){
-                System.out.print("   "+ i);
-            }else {
-                System.out.print(" "+ i);
+        for (int i = 0; i < cells.length; i++) {
+            if (i == 0) {
+                System.out.print("   " + i);
+            } else {
+                System.out.print(" " + i);
             }
         }
         System.out.println();
