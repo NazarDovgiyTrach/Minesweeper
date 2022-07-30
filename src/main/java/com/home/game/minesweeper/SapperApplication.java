@@ -13,8 +13,8 @@ public class SapperApplication {
     public static void main(String[] args) throws IOException {
         SapperService sapperService = SapperService.init(10, 10);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        while (!reader.readLine().equals("EXIT")) {
-            String line = reader.readLine();
+        String line;
+        while (!(line = reader.readLine()).equals("EXIT")) {
             String[] strings = line.split(",");
             try {
                 if (isValidInput(strings)) {

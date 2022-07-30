@@ -24,7 +24,7 @@ public class Field {
                 .collect(Collectors.toCollection(LinkedList::new));
 
         Collections.shuffle(emptyCells);
-        IntStream.rangeClosed(0, amount).forEach(x -> emptyCells.pop().setBomb(true));
+        IntStream.range(0, amount).forEach(x -> emptyCells.pop().setBomb(true));
     }
 
     public List<Cell> getNeighboringCells(Cell cell) {
